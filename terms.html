@@ -1,332 +1,685 @@
-# Server Saver — Terms of Service
-
-**Last Updated:** August 31, 2026
-**Effective Date:** August 31, 2026
-
-These Terms of Service ("Terms") govern your access to and use of **Server Saver** ("Server Saver", "the Bot", "we", "us", or "our"), a Discord application providing server backups, restoration, anti-nuke protection, moderation, and related server-management features.
-
-By adding Server Saver to a Discord server, configuring it, or using any of its features, you agree to these Terms. If you do not agree with these Terms, you must remove Server Saver from your server and stop using the Service.
-
----
-
-## 1. Eligibility and Authority
-
-You may use Server Saver only if you have appropriate authority to add, configure, or manage bots within the Discord server where it is installed.
-
-Server administrators are responsible for ensuring that their use of Server Saver complies with:
-
-* Discord's Terms of Service;
-* Discord's Developer Terms and Developer Policies;
-* Discord's Community Guidelines;
-* Applicable laws and regulations;
-* Their own server rules and policies.
-
----
-
-## 2. Description of Server Saver
-
-Server Saver provides tools intended to help Discord server administrators protect and manage their servers.
-
-Features may include:
-
-* Anti-nuke protection;
-* Detection of mass channel deletions;
-* Detection of mass role deletions or creations;
-* Detection of mass bans and kicks;
-* Detection of dangerous permission escalation;
-* Automatic protective actions;
-* Server lockdown actions;
-* Server structure backups;
-* Server restoration;
-* Backup export and import;
-* Moderation commands;
-* Moderation and security logging;
-* Server configuration;
-* Administrator and bot whitelisting;
-* Welcome messages;
-* Server status information.
-
-Features may be changed, improved, suspended, or removed at any time.
-
----
-
-## 3. Discord Permissions and Access
-
-Server Saver may require elevated Discord permissions in order to provide its functionality.
-
-Depending on the configuration and features being used, the Bot may require access to server information, members, roles, channels, permissions, audit-log information, and message-related information available through Discord's APIs.
-
-You are responsible for reviewing the permissions granted to Server Saver before installing or configuring it.
-
-Server administrators should grant only the permissions necessary for the features they intend to use.
-
----
-
-## 4. Backups
-
-Server Saver can create versioned server backups.
-
-Depending on the supported Discord information available to the Bot, a backup may contain:
-
-* Server name;
-* Server icon;
-* Server banner;
-* Categories;
-* Channels;
-* Roles;
-* Role permissions;
-* `@everyone` permissions;
-* Permission overwrites;
-* Other server configuration required by supported restoration features.
-
-Server Saver currently retains up to **five saved backups per server** as part of its versioned backup storage.
-
-Backups are intended to provide administrators with a recovery mechanism following accidental or malicious server changes.
-
-### Backup limitations
-
-Backups are not guaranteed to contain every piece of information associated with a Discord server.
-
-In particular, Server Saver does not restore:
-
-* Message history;
-* Member-specific permission overwrites;
-* Other Discord information that cannot reliably be recreated through the Discord API.
-
-Restoration capabilities may also change if Discord changes its API or permissions.
-
----
-
-## 5. Backup Export and Import
-
-Server Saver allows administrators to export supported backups as JSON files.
-
-Exported backups may be downloaded, stored externally, or imported into another server where the Bot is installed and the administrator has the required permissions.
-
-Administrators are responsible for protecting exported backup files.
-
-Anyone who obtains an exported backup may potentially gain access to the server configuration contained within that file.
-
-Do not upload or share exported backups with people you do not trust.
-
----
-
-## 6. Restoration
-
-The `/restore` feature allows authorized administrators to restore supported server configuration from a saved backup.
-
-Server Saver presents the administrator with a confirmation step before performing a restoration.
-
-Restoration may create, modify, or remove server resources in accordance with the selected backup and the Bot's capabilities.
-
-You are responsible for reviewing the proposed restoration and ensuring that the selected backup is appropriate.
-
-We do not guarantee that restoration will reproduce the server exactly as it existed when the backup was created.
-
----
-
-## 7. Anti-Nuke Protection
-
-Server Saver uses automated burst and heuristic detection to identify potentially destructive activity.
-
-Depending on the server's configured sensitivity, the Bot may respond to:
-
-* Channel deletions;
-* Bans;
-* Kicks;
-* Role deletions;
-* Role creations;
-* Dangerous role-permission changes;
-* Dangerous `@everyone` permission changes;
-* Unwhitelisted bot joins.
-
-Protective actions may include:
-
-* Removing dangerous permissions from an actor;
-* Kicking an actor;
-* Reverting certain permission changes;
-* Logging the event;
-* Notifying server administrators.
-
-The server owner and users placed on the Server Saver whitelist may be exempt from certain anti-nuke actions.
-
----
-
-## 8. No Guarantee of Complete Protection
-
-Server Saver is a security and moderation tool, not a guarantee of complete server protection.
-
-Its anti-nuke system uses thresholds and heuristic/burst detection. An attacker who acts slowly enough to remain below configured thresholds may not be detected.
-
-False positives may also occur, particularly at stricter sensitivity levels.
-
-Server administrators should therefore use additional security measures, including appropriate Discord permissions, two-factor authentication where available, and careful management of users with Administrator permissions.
-
-We are not responsible for damage caused by attacks that Server Saver fails to detect or prevent.
-
----
-
-## 9. Automated Moderation
-
-Server Saver may automatically take moderation or security actions based on its configuration and detected events.
-
-Automated decisions may occasionally be incorrect.
-
-Server administrators are responsible for reviewing Server Saver's configuration, sensitivity level, whitelist, logs, and automated actions.
-
----
-
-## 10. Acceptable Use
-
-You must not use Server Saver to:
-
-* Violate Discord's Terms, Developer Policies, or Community Guidelines;
-* Harass, threaten, or abuse other users;
-* Circumvent Discord security or safety systems;
-* Attempt to compromise Server Saver or its infrastructure;
-* Exploit vulnerabilities for malicious purposes;
-* Abuse the Discord API;
-* Deliberately overload or disrupt Server Saver;
-* Collect or process information for unlawful purposes;
-* Facilitate illegal activity;
-* Use Server Saver in a manner inconsistent with its stated functionality.
-
-We may restrict or terminate access where reasonably necessary to prevent abuse, security threats, or violations of these Terms.
-
----
-
-## 11. Availability
-
-Server Saver is provided on an "as available" basis.
-
-The Service may become unavailable because of:
-
-* Maintenance;
-* Software errors;
-* Hosting failures;
-* Database failures;
-* Discord API outages;
-* Discord rate limits;
-* Network failures;
-* Security incidents;
-* Other circumstances outside our reasonable control.
-
-We do not guarantee uninterrupted availability.
-
----
-
-## 12. Third-Party Services
-
-Server Saver operates through Discord and may rely on infrastructure or service providers required to operate the Bot.
-
-Discord is an independent third-party platform.
-
-Your use of Discord remains subject to Discord's own Terms of Service, Developer Terms, Privacy Policy, and other applicable policies.
-
-If these Terms conflict with mandatory Discord requirements, the applicable Discord requirements take precedence with respect to use of Discord's platform.
-
----
-
-## 13. Intellectual Property
-
-Unless otherwise stated, Server Saver's original software, branding, name, logos, documentation, and other original materials are owned by **Dimitris K**.
-
-Nothing in these Terms grants you ownership of Server Saver or its intellectual property.
-
-If the Server Saver source code is distributed under a separate open-source license, that license governs the rights granted to the source code.
-
----
-
-## 14. User and Server Responsibility
-
-Server administrators are responsible for:
-
-* Configuring Server Saver appropriately;
-* Reviewing the permissions granted to the Bot;
-* Maintaining appropriate server security;
-* Reviewing backups;
-* Protecting exported backup files;
-* Reviewing automated security actions;
-* Managing whitelisted users and bots;
-* Ensuring lawful use of the Service.
-
-Server Saver does not replace responsible server administration.
-
----
-
-## 15. Disclaimer
-
-To the maximum extent permitted by applicable law, Server Saver is provided "AS IS" and "AS AVAILABLE", without warranties of any kind.
-
-We do not guarantee that Server Saver will:
-
-* Prevent every server attack;
-* Detect every malicious action;
-* Correctly identify every attacker;
-* Prevent every unauthorized change;
-* Successfully restore every backup;
-* Preserve all server information;
-* Prevent data loss;
-* Operate without errors or interruptions.
-
----
-
-## 16. Limitation of Liability
-
-To the maximum extent permitted by applicable law, **[Your Name / Company Name]** and the Server Saver development team will not be liable for indirect, incidental, special, consequential, or punitive damages arising from the use of, or inability to use, Server Saver.
-
-This includes losses involving:
-
-* Server configuration;
-* Server data;
-* Backups;
-* Discord accounts;
-* Discord servers;
-* Server access;
-* Revenue;
-* Reputation;
-* Content.
-
-Nothing in these Terms excludes liability that cannot legally be excluded under applicable law.
-
----
-
-## 17. Suspension and Termination
-
-You may stop using Server Saver at any time by removing it from your Discord server.
-
-We may suspend or terminate access to Server Saver where reasonably necessary because of:
-
-* Violation of these Terms;
-* Abuse of the Service;
-* Security threats;
-* Illegal use;
-* Technical or operational requirements;
-* Legal requirements;
-* Actions by Discord affecting the Bot or its access to the Discord API.
-
-Where reasonably possible, we may provide notice before termination.
-
----
-
-## 18. Changes to These Terms
-
-We may update these Terms as Server Saver develops or as legal or regulatory requirements change.
-
-The "Last Updated" date will be changed when this document is updated.
-
-Continued use of Server Saver after updated Terms become effective constitutes acceptance of the updated Terms, to the extent permitted by applicable law.
-
----
-
-## 19. Contact
-
-For questions regarding these Terms, contact:
-
-**Developer / Company:** Dimitris K
-**Email:** savesync69@gmail.com
-**Support Server:** https://discord.gg/kczpK6pQVH
-
----
-
-**By using Server Saver, you acknowledge that you have read and agree to these Terms of Service.**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Server Saver — Terms of Service</title>
+
+    <style>
+        :root {
+            --background: #0b0f14;
+            --card: #121821;
+            --text: #e8edf3;
+            --muted: #aab4c0;
+            --accent: #4da3ff;
+            --border: #263241;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: var(--background);
+            color: var(--text);
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            line-height: 1.7;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 42px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            margin-top: 2.2rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 1.45rem;
+        }
+
+        h3 {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        p {
+            color: var(--text);
+        }
+
+        li {
+            margin: 0.35rem 0;
+        }
+
+        code {
+            padding: 0.15rem 0.35rem;
+            border-radius: 5px;
+            background: #0a0e13;
+            color: #d9e2ec;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 1.5rem 0;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        .meta {
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            main {
+                padding: 24px 18px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<main>
+
+    <h1>Server Saver — Terms of Service</h1>
+
+    <p class="meta">
+        <strong>Last Updated:</strong> August 31, 2026
+    </p>
+
+    <p class="meta">
+        <strong>Effective Date:</strong> August 31, 2026
+    </p>
+
+    <hr>
+
+    <p>
+        These Terms of Service ("Terms") govern your access to and use of
+        <strong>Server Saver</strong> ("Server Saver", "the Bot", "we",
+        "us", or "our"), a Discord application providing server backups,
+        restoration, anti-nuke protection, moderation, and related
+        server-management features.
+    </p>
+
+    <p>
+        By adding Server Saver to a Discord server, configuring it, or using
+        any of its features, you agree to these Terms. If you do not agree
+        with these Terms, you must remove Server Saver from your server and
+        stop using the Service.
+    </p>
+
+
+    <h2>1. Eligibility and Authority</h2>
+
+    <p>
+        You may use Server Saver only if you have appropriate authority to
+        add, configure, or manage bots within the Discord server where it
+        is installed.
+    </p>
+
+    <p>
+        Server administrators are responsible for ensuring that their use
+        of Server Saver complies with:
+    </p>
+
+    <ul>
+        <li>Discord's Terms of Service;</li>
+        <li>Discord's Developer Terms and Developer Policies;</li>
+        <li>Discord's Community Guidelines;</li>
+        <li>Applicable laws and regulations;</li>
+        <li>Their own server rules and policies.</li>
+    </ul>
+
+
+    <h2>2. Description of Server Saver</h2>
+
+    <p>
+        Server Saver provides tools intended to help Discord server
+        administrators protect and manage their servers.
+    </p>
+
+    <p>Features may include:</p>
+
+    <ul>
+        <li>Anti-nuke protection;</li>
+        <li>Detection of mass channel deletions;</li>
+        <li>Detection of mass role deletions or creations;</li>
+        <li>Detection of mass bans and kicks;</li>
+        <li>Detection of dangerous permission escalation;</li>
+        <li>Automatic protective actions;</li>
+        <li>Server lockdown actions;</li>
+        <li>Server structure backups;</li>
+        <li>Server restoration;</li>
+        <li>Backup export and import;</li>
+        <li>Moderation commands;</li>
+        <li>Moderation and security logging;</li>
+        <li>Server configuration;</li>
+        <li>Administrator and bot whitelisting;</li>
+        <li>Welcome messages;</li>
+        <li>Server status information.</li>
+    </ul>
+
+    <p>
+        Features may be changed, improved, suspended, or removed at any time.
+    </p>
+
+
+    <h2>3. Discord Permissions and Access</h2>
+
+    <p>
+        Server Saver may require elevated Discord permissions in order to
+        provide its functionality.
+    </p>
+
+    <p>
+        Depending on the configuration and features being used, the Bot may
+        require access to server information, members, roles, channels,
+        permissions, audit-log information, and message-related information
+        available through Discord's APIs.
+    </p>
+
+    <p>
+        You are responsible for reviewing the permissions granted to Server
+        Saver before installing or configuring it.
+    </p>
+
+    <p>
+        Server administrators should grant only the permissions necessary
+        for the features they intend to use.
+    </p>
+
+
+    <h2>4. Backups</h2>
+
+    <p>
+        Server Saver can create versioned server backups.
+    </p>
+
+    <p>
+        Depending on the supported Discord information available to the Bot,
+        a backup may contain:
+    </p>
+
+    <ul>
+        <li>Server name;</li>
+        <li>Server icon;</li>
+        <li>Server banner;</li>
+        <li>Categories;</li>
+        <li>Channels;</li>
+        <li>Roles;</li>
+        <li>Role permissions;</li>
+        <li><code>@everyone</code> permissions;</li>
+        <li>Permission overwrites;</li>
+        <li>
+            Other server configuration required by supported restoration
+            features.
+        </li>
+    </ul>
+
+    <p>
+        Server Saver currently retains up to
+        <strong>five saved backups per server</strong> as part of its
+        versioned backup storage.
+    </p>
+
+    <p>
+        Backups are intended to provide administrators with a recovery
+        mechanism following accidental or malicious server changes.
+    </p>
+
+    <h3>Backup limitations</h3>
+
+    <p>
+        Backups are not guaranteed to contain every piece of information
+        associated with a Discord server.
+    </p>
+
+    <p>In particular, Server Saver does not restore:</p>
+
+    <ul>
+        <li>Message history;</li>
+        <li>Member-specific permission overwrites;</li>
+        <li>
+            Other Discord information that cannot reliably be recreated
+            through the Discord API.
+        </li>
+    </ul>
+
+    <p>
+        Restoration capabilities may also change if Discord changes its API
+        or permissions.
+    </p>
+
+
+    <h2>5. Backup Export and Import</h2>
+
+    <p>
+        Server Saver allows administrators to export supported backups as
+        JSON files.
+    </p>
+
+    <p>
+        Exported backups may be downloaded, stored externally, or imported
+        into another server where the Bot is installed and the administrator
+        has the required permissions.
+    </p>
+
+    <p>
+        Administrators are responsible for protecting exported backup files.
+    </p>
+
+    <p>
+        Anyone who obtains an exported backup may potentially gain access to
+        the server configuration contained within that file.
+    </p>
+
+    <p>
+        Do not upload or share exported backups with people you do not trust.
+    </p>
+
+
+    <h2>6. Restoration</h2>
+
+    <p>
+        The <code>/restore</code> feature allows authorized administrators
+        to restore supported server configuration from a saved backup.
+    </p>
+
+    <p>
+        Server Saver presents the administrator with a confirmation step
+        before performing a restoration.
+    </p>
+
+    <p>
+        Restoration may create, modify, or remove server resources in
+        accordance with the selected backup and the Bot's capabilities.
+    </p>
+
+    <p>
+        You are responsible for reviewing the proposed restoration and
+        ensuring that the selected backup is appropriate.
+    </p>
+
+    <p>
+        We do not guarantee that restoration will reproduce the server
+        exactly as it existed when the backup was created.
+    </p>
+
+
+    <h2>7. Anti-Nuke Protection</h2>
+
+    <p>
+        Server Saver uses automated burst and heuristic detection to
+        identify potentially destructive activity.
+    </p>
+
+    <p>
+        Depending on the server's configured sensitivity, the Bot may respond
+        to:
+    </p>
+
+    <ul>
+        <li>Channel deletions;</li>
+        <li>Bans;</li>
+        <li>Kicks;</li>
+        <li>Role deletions;</li>
+        <li>Role creations;</li>
+        <li>Dangerous role-permission changes;</li>
+        <li>Dangerous <code>@everyone</code> permission changes;</li>
+        <li>Unwhitelisted bot joins.</li>
+    </ul>
+
+    <p>Protective actions may include:</p>
+
+    <ul>
+        <li>Removing dangerous permissions from an actor;</li>
+        <li>Kicking an actor;</li>
+        <li>Reverting certain permission changes;</li>
+        <li>Logging the event;</li>
+        <li>Notifying server administrators.</li>
+    </ul>
+
+    <p>
+        The server owner and users placed on the Server Saver whitelist may
+        be exempt from certain anti-nuke actions.
+    </p>
+
+
+    <h2>8. No Guarantee of Complete Protection</h2>
+
+    <p>
+        Server Saver is a security and moderation tool, not a guarantee of
+        complete server protection.
+    </p>
+
+    <p>
+        Its anti-nuke system uses thresholds and heuristic/burst detection.
+        An attacker who acts slowly enough to remain below configured
+        thresholds may not be detected.
+    </p>
+
+    <p>
+        False positives may also occur, particularly at stricter sensitivity
+        levels.
+    </p>
+
+    <p>
+        Server administrators should therefore use additional security
+        measures, including appropriate Discord permissions, two-factor
+        authentication where available, and careful management of users
+        with Administrator permissions.
+    </p>
+
+    <p>
+        We are not responsible for damage caused by attacks that Server Saver
+        fails to detect or prevent.
+    </p>
+
+
+    <h2>9. Automated Moderation</h2>
+
+    <p>
+        Server Saver may automatically take moderation or security actions
+        based on its configuration and detected events.
+    </p>
+
+    <p>
+        Automated decisions may occasionally be incorrect.
+    </p>
+
+    <p>
+        Server administrators are responsible for reviewing Server Saver's
+        configuration, sensitivity level, whitelist, logs, and automated
+        actions.
+    </p>
+
+
+    <h2>10. Acceptable Use</h2>
+
+    <p>You must not use Server Saver to:</p>
+
+    <ul>
+        <li>Violate Discord's Terms, Developer Policies, or Community Guidelines;</li>
+        <li>Harass, threaten, or abuse other users;</li>
+        <li>Circumvent Discord security or safety systems;</li>
+        <li>Attempt to compromise Server Saver or its infrastructure;</li>
+        <li>Exploit vulnerabilities for malicious purposes;</li>
+        <li>Abuse the Discord API;</li>
+        <li>Deliberately overload or disrupt Server Saver;</li>
+        <li>Collect or process information for unlawful purposes;</li>
+        <li>Facilitate illegal activity;</li>
+        <li>Use Server Saver in a manner inconsistent with its stated functionality.</li>
+    </ul>
+
+    <p>
+        We may restrict or terminate access where reasonably necessary to
+        prevent abuse, security threats, or violations of these Terms.
+    </p>
+
+
+    <h2>11. Availability</h2>
+
+    <p>
+        Server Saver is provided on an "as available" basis.
+    </p>
+
+    <p>The Service may become unavailable because of:</p>
+
+    <ul>
+        <li>Maintenance;</li>
+        <li>Software errors;</li>
+        <li>Hosting failures;</li>
+        <li>Database failures;</li>
+        <li>Discord API outages;</li>
+        <li>Discord rate limits;</li>
+        <li>Network failures;</li>
+        <li>Security incidents;</li>
+        <li>Other circumstances outside our reasonable control.</li>
+    </ul>
+
+    <p>
+        We do not guarantee uninterrupted availability.
+    </p>
+
+
+    <h2>12. Third-Party Services</h2>
+
+    <p>
+        Server Saver operates through Discord and may rely on infrastructure
+        or service providers required to operate the Bot.
+    </p>
+
+    <p>
+        Discord is an independent third-party platform.
+    </p>
+
+    <p>
+        Your use of Discord remains subject to Discord's own Terms of
+        Service, Developer Terms, Privacy Policy, and other applicable
+        policies.
+    </p>
+
+    <p>
+        If these Terms conflict with mandatory Discord requirements, the
+        applicable Discord requirements take precedence with respect to use
+        of Discord's platform.
+    </p>
+
+
+    <h2>13. Intellectual Property</h2>
+
+    <p>
+        Unless otherwise stated, Server Saver's original software, branding,
+        name, logos, documentation, and other original materials are owned
+        by <strong>Dimitris K</strong>.
+    </p>
+
+    <p>
+        Nothing in these Terms grants you ownership of Server Saver or its
+        intellectual property.
+    </p>
+
+    <p>
+        If the Server Saver source code is distributed under a separate
+        open-source license, that license governs the rights granted to the
+        source code.
+    </p>
+
+
+    <h2>14. User and Server Responsibility</h2>
+
+    <p>Server administrators are responsible for:</p>
+
+    <ul>
+        <li>Configuring Server Saver appropriately;</li>
+        <li>Reviewing the permissions granted to the Bot;</li>
+        <li>Maintaining appropriate server security;</li>
+        <li>Reviewing backups;</li>
+        <li>Protecting exported backup files;</li>
+        <li>Reviewing automated security actions;</li>
+        <li>Managing whitelisted users and bots;</li>
+        <li>Ensuring lawful use of the Service.</li>
+    </ul>
+
+    <p>
+        Server Saver does not replace responsible server administration.
+    </p>
+
+
+    <h2>15. Disclaimer</h2>
+
+    <p>
+        To the maximum extent permitted by applicable law, Server Saver is
+        provided <strong>"AS IS" and "AS AVAILABLE"</strong>, without
+        warranties of any kind.
+    </p>
+
+    <p>We do not guarantee that Server Saver will:</p>
+
+    <ul>
+        <li>Prevent every server attack;</li>
+        <li>Detect every malicious action;</li>
+        <li>Correctly identify every attacker;</li>
+        <li>Prevent every unauthorized change;</li>
+        <li>Successfully restore every backup;</li>
+        <li>Preserve all server information;</li>
+        <li>Prevent data loss;</li>
+        <li>Operate without errors or interruptions.</li>
+    </ul>
+
+
+    <h2>16. Limitation of Liability</h2>
+
+    <p>
+        To the maximum extent permitted by applicable law,
+        <strong>[Your Name / Company Name]</strong> and the Server Saver
+        development team will not be liable for indirect, incidental,
+        special, consequential, or punitive damages arising from the use of,
+        or inability to use, Server Saver.
+    </p>
+
+    <p>This includes losses involving:</p>
+
+    <ul>
+        <li>Server configuration;</li>
+        <li>Server data;</li>
+        <li>Backups;</li>
+        <li>Discord accounts;</li>
+        <li>Discord servers;</li>
+        <li>Server access;</li>
+        <li>Revenue;</li>
+        <li>Reputation;</li>
+        <li>Content.</li>
+    </ul>
+
+    <p>
+        Nothing in these Terms excludes liability that cannot legally be
+        excluded under applicable law.
+    </p>
+
+
+    <h2>17. Suspension and Termination</h2>
+
+    <p>
+        You may stop using Server Saver at any time by removing it from your
+        Discord server.
+    </p>
+
+    <p>
+        We may suspend or terminate access where reasonably necessary
+        because of:
+    </p>
+
+    <ul>
+        <li>Violation of these Terms;</li>
+        <li>Abuse of the Service;</li>
+        <li>Security threats;</li>
+        <li>Illegal use;</li>
+        <li>Technical or operational requirements;</li>
+        <li>Legal requirements;</li>
+        <li>
+            Actions by Discord affecting the Bot or its access to the
+            Discord API.
+        </li>
+    </ul>
+
+    <p>
+        Where reasonably possible, we may provide notice before termination.
+    </p>
+
+
+    <h2>18. Changes to These Terms</h2>
+
+    <p>
+        We may update these Terms as Server Saver develops or as legal or
+        regulatory requirements change.
+    </p>
+
+    <p>
+        The "Last Updated" date will be changed when this document is updated.
+    </p>
+
+    <p>
+        Continued use of Server Saver after updated Terms become effective
+        constitutes acceptance of the updated Terms, to the extent permitted
+        by applicable law.
+    </p>
+
+
+    <h2>19. Contact</h2>
+
+    <p>
+        For questions regarding these Terms, contact:
+    </p>
+
+    <p>
+        <strong>Developer / Company:</strong> Dimitris K
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        <a href="mailto:savesync69@gmail.com">
+            savesync69@gmail.com
+        </a>
+    </p>
+
+    <p>
+        <strong>Support Server:</strong>
+        <a
+            href="https://discord.gg/kczpK6pQVH"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Discord Support Server
+        </a>
+    </p>
+
+
+    <hr>
+
+    <p>
+        <strong>
+            By using Server Saver, you acknowledge that you have read and
+            agree to these Terms of Service.
+        </strong>
+    </p>
+
+</main>
+
+</body>
+</html>
