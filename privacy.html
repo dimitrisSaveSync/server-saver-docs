@@ -1,0 +1,378 @@
+# Server Saver — Privacy Policy
+
+**Last Updated:** August 31, 2026
+**Effective Date:** August 31, 2026
+
+This Privacy Policy explains how **Server Saver** ("Server Saver", "the Bot", "we", "us", or "our") collects, accesses, uses, stores, and deletes information obtained through Discord when you use Server Saver.
+
+This Privacy Policy applies to Server Saver and its associated services.
+
+---
+
+## 1. Who We Are
+
+**Data Controller:** Dimitris K
+**Email:** savesync69@gmail.com
+**Country:** Greece
+
+For privacy questions or requests, contact us using the information above.
+
+---
+
+## 2. Information Server Saver Processes
+
+Server Saver processes information made available through Discord's APIs that is necessary to provide its functionality.
+
+Depending on how the Bot is configured and used, this may include:
+
+### Server Information
+
+* Discord server ID;
+* Server name;
+* Server icon;
+* Server banner;
+* Channel IDs and names;
+* Category information;
+* Role IDs and names;
+* Role hierarchy;
+* Role permissions;
+* `@everyone` permissions;
+* Permission overwrites;
+* Server configuration.
+
+This information is required for features such as backups and restoration.
+
+### User and Member Information
+
+Server Saver may process limited Discord information relating to members, including:
+
+* Discord user ID;
+* Username or display name;
+* Server roles;
+* Information necessary to identify the actor responsible for a security or moderation event;
+* Information contained in relevant Discord audit-log events accessible to the Bot.
+
+### Security and Moderation Information
+
+Server Saver may record events such as:
+
+* Bans;
+* Kicks;
+* Channel deletions;
+* Role deletions;
+* Role creations;
+* Dangerous permission changes;
+* Anti-nuke triggers;
+* Whitelist configuration;
+* Bot whitelist configuration;
+* Moderation actions.
+
+These records are used to provide Server Saver's moderation and anti-nuke functionality.
+
+---
+
+## 3. Message Content
+
+Server Saver requests Discord's **Message Content Intent**.
+
+Server Saver's documented functionality does not use message history as part of its backup and restoration system.
+
+Server administrators should nevertheless understand that enabling Discord's Message Content Intent may make certain message-related information available to the Bot through Discord's API where required for its functionality.
+
+Server Saver does not use Discord message content to train artificial intelligence or machine-learning models.
+
+If this changes in the future, this Privacy Policy will be updated before such processing is introduced where required by applicable law and Discord policy.
+
+---
+
+## 4. Backups
+
+When an administrator uses `/backup`, Server Saver stores a snapshot of supported server configuration.
+
+A backup may contain:
+
+* Server name;
+* Server icon;
+* Server banner;
+* Categories;
+* Channels;
+* Roles;
+* Role permissions;
+* `@everyone` permissions;
+* Permission overwrites;
+* Other configuration necessary for supported restoration functionality.
+
+Server Saver's current storage implementation keeps up to **five versioned backups per server**.
+
+Backups do not contain message history or member-specific permission overwrites because these cannot reliably be recreated by Server Saver.
+
+---
+
+## 5. Exported Backups
+
+Administrators can use `/exportbackup` to generate a JSON backup file.
+
+Exported files are provided to the administrator and may be stored or shared outside Server Saver.
+
+Once an administrator downloads an exported backup, the administrator is responsible for how that file is stored, shared, and protected.
+
+Server Saver cannot control copies of exported files that are stored outside infrastructure under our control.
+
+---
+
+## 6. Imported Backups
+
+Administrators may use `/importbackup` to upload a previously exported JSON backup.
+
+Imported backup information is processed so that it can be stored and used by Server Saver's restoration functionality.
+
+Administrators should only upload backups that they are authorized to use.
+
+---
+
+## 7. Local Database Storage
+
+Server Saver uses a SQLite database to store information required for its operation.
+
+The current implementation stores information including:
+
+* Server configuration;
+* Administrator whitelist information;
+* Bot whitelist information;
+* Versioned backups;
+* Anti-nuke trigger history.
+
+The database is created and maintained as part of the Bot's operation.
+
+---
+
+## 8. How We Use Information
+
+Information processed by Server Saver is used to:
+
+* Provide requested Bot functionality;
+* Create and restore server backups;
+* Detect potentially destructive activity;
+* Execute configured anti-nuke protections;
+* Perform moderation actions;
+* Maintain moderation and security logs;
+* Identify actors involved in security events;
+* Maintain administrator and bot whitelists;
+* Provide server status information;
+* Diagnose technical problems;
+* Prevent abuse and protect the Service;
+* Comply with applicable legal obligations.
+
+We do not use Discord API data for unrelated purposes.
+
+---
+
+## 9. Anti-Nuke Notifications and Logs
+
+When an anti-nuke event is detected, Server Saver may:
+
+* Record the event;
+* Post the event in the configured log channel;
+* Take automated protective action;
+* Notify members with Administrator permission through Discord;
+* DM the server owner or relevant administrators where supported by the Bot's functionality.
+
+The information contained in these notifications may include information about the detected action and the Discord user responsible for it.
+
+---
+
+## 10. Data Sharing
+
+We do **not sell, rent, or license Discord user data**.
+
+We may share or permit access to information only where necessary for operating Server Saver, complying with law, or protecting the Service.
+
+This may include trusted service providers such as:
+
+* Hosting providers;
+* Database or storage providers;
+* Infrastructure providers;
+* Monitoring or logging providers.
+
+Service providers may process information only as necessary to provide services to Server Saver.
+
+We may also disclose information where required by applicable law or where reasonably necessary to:
+
+* Respond to valid legal requests;
+* Protect Server Saver;
+* Investigate abuse;
+* Prevent fraud or security incidents;
+* Protect our rights or the rights of others.
+
+We do not provide Discord API data to advertising networks or data brokers.
+
+---
+
+## 11. Data Retention
+
+We retain information only for as long as reasonably necessary to provide Server Saver's stated functionality, maintain security, comply with legal obligations, and resolve disputes.
+
+### Backups
+
+The current Server Saver implementation retains up to **five versioned backups per server**.
+
+Older backups may be removed when the storage limit is reached or when otherwise deleted.
+
+### Anti-Nuke History
+
+Anti-nuke trigger history may be stored as part of the server's configuration and security information.
+
+### Configuration
+
+Server configuration and whitelist information may be retained while Server Saver is configured for the relevant server.
+
+Specific retention periods may change as the Service develops.
+
+Where Discord or applicable law requires deletion of API data, we will take appropriate steps to delete it unless retention is legally required.
+
+---
+
+## 12. Data Deletion
+
+Server administrators may request deletion of Server Saver data associated with their server.
+
+A deletion request may include:
+
+* Server ID;
+* The requester's Discord user ID;
+* Information reasonably necessary to verify authority over the server.
+
+Depending on the data and how it is stored, deletion may require manual processing.
+
+We will delete information when required by applicable law or when it is no longer necessary for the stated functionality, subject to legitimate legal or security requirements.
+
+Some information may need to be temporarily retained where necessary to:
+
+* Comply with law;
+* Prevent abuse;
+* Resolve disputes;
+* Protect the Service;
+* Establish or defend legal claims.
+
+---
+
+## 13. Your Privacy Rights
+
+Depending on your location and applicable law, you may have rights including:
+
+* Accessing personal information we hold about you;
+* Requesting correction of inaccurate information;
+* Requesting deletion;
+* Objecting to certain processing;
+* Requesting restriction of processing;
+* Requesting data portability where applicable;
+* Withdrawing consent where consent is the legal basis;
+* Filing a complaint with a relevant data-protection authority.
+
+To exercise a right, contact us using the details in Section 1.
+
+We may need to verify the legitimacy of a request before processing it.
+
+---
+
+## 14. GDPR
+
+If the General Data Protection Regulation ("GDPR") applies to our processing of your personal data, we will process that data in accordance with applicable GDPR requirements.
+
+Depending on the circumstances, our legal bases may include:
+
+### Contract
+
+Processing necessary to provide Server Saver's requested functionality.
+
+### Legitimate Interests
+
+Processing necessary for security, anti-abuse protection, service operation, troubleshooting, and maintaining the integrity of Server Saver.
+
+### Legal Obligation
+
+Processing required to comply with applicable law.
+
+### Consent
+
+Where consent is specifically required by applicable law.
+
+You may contact us regarding your GDPR rights using the contact information in this Privacy Policy.
+
+You may also have the right to lodge a complaint with your relevant data-protection supervisory authority.
+
+---
+
+## 15. Security
+
+We use reasonable technical and organizational measures intended to protect information processed by Server Saver.
+
+However, no online service or storage system can guarantee absolute security.
+
+Server administrators are also responsible for protecting:
+
+* Their Discord accounts;
+* Bot permissions;
+* Exported backup files;
+* Server administrator accounts.
+
+---
+
+## 16. Discord
+
+Server Saver operates through the Discord platform.
+
+Discord independently processes information under its own Privacy Policy and Terms.
+
+Discord also provides users with information about the data access of individual bots and applications through Discord's interface.
+
+Server Saver does not control Discord's independent processing of information.
+
+---
+
+## 17. Children's Privacy
+
+Server Saver is not specifically designed to collect personal information from children.
+
+Server Saver operates through Discord, and users must comply with Discord's applicable age requirements and policies.
+
+We do not knowingly request unnecessary personal information from minors.
+
+---
+
+## 18. International Data Transfers
+
+Depending on where Server Saver and its infrastructure are hosted, information may be processed or stored in countries outside your country of residence.
+
+Where required by applicable law, appropriate safeguards will be used for international transfers.
+
+---
+
+## 19. Changes to This Privacy Policy
+
+We may update this Privacy Policy when:
+
+* Server Saver's functionality changes;
+* Our data practices change;
+* Our infrastructure changes;
+* Legal requirements change.
+
+The "Last Updated" date will be updated whenever this document is materially changed.
+
+Where required, we may provide additional notice of significant changes.
+
+---
+
+## 20. Contact and Privacy Requests
+
+For privacy questions, data-access requests, deletion requests, or other privacy concerns:
+
+**Data Controller:** Dimitris K
+**Privacy Email:** savesync69@gmail.com
+**Support Server:** https://discord.gg/kczpK6pQVH
+
+Please include enough information for us to identify the relevant server or data without unnecessarily providing sensitive information.
+
+---
+
+**By using Server Saver, you acknowledge that you have read and understood this Privacy Policy.**
