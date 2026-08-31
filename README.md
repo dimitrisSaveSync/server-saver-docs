@@ -2,12 +2,6 @@
 
 Slash-command moderation bot with versioned backup/restore and anti-nuke protection.
 
-## ⚠️ First step: rotate your token
-
-If your old bot token was ever hardcoded in a shared file, rotate it in the
-[Discord Developer Portal](https://discord.com/developers/applications) →
-your app → **Bot** → **Reset Token** before running this.
-
 ## Setup
 
 1. Install dependencies:
