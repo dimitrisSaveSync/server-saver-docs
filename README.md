@@ -2,27 +2,8 @@
 
 Slash-command moderation bot with versioned backup/restore and anti-nuke protection.
 
-## Setup
 
-1. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-2. Copy `.env.example` to `.env` and fill in your token:
-   ```
-   cp .env.example .env
-   ```
-3. Load it before running — either via your host's dashboard, or add this
-   to the very top of `main.py`:
-   ```python
-   from dotenv import load_dotenv
-   load_dotenv()
-   ```
-4. In the Developer Portal, under **Bot**, enable **Server Members Intent**
-   and **Message Content Intent**.
-5. When inviting the bot, grant the `applications.commands` scope in
-   addition to `bot` so slash commands register.
-6. Run it:
+1. Run it:
    ```
    python main.py
    ```
