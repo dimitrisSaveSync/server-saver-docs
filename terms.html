@@ -115,15 +115,14 @@
 <body>
 
 <main>
-
     <h1>Server Saver — Terms of Service</h1>
 
     <p class="meta">
-        <strong>Last Updated:</strong> August 31, 2026
+        <strong>Last Updated:</strong> October 1, 2026
     </p>
 
     <p class="meta">
-        <strong>Effective Date:</strong> August 31, 2026
+        <strong>Effective Date:</strong> October 1, 2026
     </p>
 
     <hr>
@@ -132,7 +131,8 @@
         These Terms of Service ("Terms") govern your access to and use of
         <strong>Server Saver</strong> ("Server Saver", "the Bot", "we",
         "us", or "our"), a Discord application providing server backups,
-        restoration, anti-nuke protection, moderation, and related
+        restoration, anti-nuke protection, anti-raid protection, join
+        gating, panic-mode lockdown, moderation, and related
         server-management features.
     </p>
 
@@ -170,28 +170,29 @@
 
     <p>
         Server Saver provides tools intended to help Discord server
-        administrators protect and manage their servers.
+        administrators protect, monitor, and manage their servers.
     </p>
 
     <p>Features may include:</p>
 
     <ul>
-        <li>Anti-nuke protection;</li>
-        <li>Detection of mass channel deletions;</li>
-        <li>Detection of mass role deletions or creations;</li>
-        <li>Detection of mass bans and kicks;</li>
-        <li>Detection of dangerous permission escalation;</li>
-        <li>Automatic protective actions;</li>
-        <li>Server lockdown actions;</li>
-        <li>Server structure backups;</li>
-        <li>Server restoration;</li>
-        <li>Backup export and import;</li>
-        <li>Moderation commands;</li>
+        <li>Anti-nuke protection, including detection of mass channel deletions or creations, mass role deletions or creations, mass bans and kicks, dangerous permission escalation, and combined/mixed attack patterns;</li>
+        <li>Configurable automated protective actions (kick, ban, role removal, or quarantine);</li>
+        <li>A permanent blacklist for known hostile users, and a whitelist to exempt trusted administrators;</li>
+        <li>Anti-raid protection, including join-flood detection and automatic or manual server lockdown;</li>
+        <li>JoinGate, including minimum account-age requirements and unauthorized-bot gating on join;</li>
+        <li>Panic Mode, a manually triggered full-server lockdown;</li>
+        <li>Grouped security incident tracking and reporting;</li>
+        <li>Server structure backups, including manual and scheduled automatic backups;</li>
+        <li>Server restoration, including a pre-restoration preview and an automatic safety backup taken before each restoration;</li>
+        <li>Backup export and import, and comparison between saved backups;</li>
+        <li>A configurable, per-server word filter with logging of filtered messages;</li>
+        <li>Moderation commands, including kick, ban, unban, warn, and channel sanitization (message purge via channel recreation);</li>
         <li>Moderation and security logging;</li>
-        <li>Server configuration;</li>
+        <li>Server configuration and security self-check tools;</li>
         <li>Administrator and bot whitelisting;</li>
         <li>Welcome messages;</li>
-        <li>Server status information.</li>
+        <li>Server status and dashboard information.</li>
     </ul>
 
     <p>
@@ -214,8 +215,16 @@
     </p>
 
     <p>
-        You are responsible for reviewing the permissions granted to Server
-        Saver before installing or configuring it.
+        Several of Server Saver's protective features depend on the Bot's
+        own role being positioned above the roles it may need to act
+        against. Discord enforces this role-hierarchy requirement
+        independently of the permissions granted to the Bot; if it is not
+        met, some protective actions may fail.
+    </p>
+
+    <p>
+        You are responsible for reviewing the permissions and role position
+        granted to Server Saver before installing or configuring it.
     </p>
 
     <p>
@@ -227,7 +236,8 @@
     <h2>4. Backups</h2>
 
     <p>
-        Server Saver can create versioned server backups.
+        Server Saver can create versioned server backups, either manually
+        or on an automatic schedule configured by a server administrator.
     </p>
 
     <p>
@@ -252,14 +262,17 @@
     </ul>
 
     <p>
-        Server Saver currently retains up to
-        <strong>five saved backups per server</strong> as part of its
-        versioned backup storage.
+        Server Saver retains a configurable number of saved backups per
+        server, defaulting to five and adjustable by a server administrator
+        up to a maximum of one hundred. Older backups are only removed after
+        a new backup has been saved successfully.
     </p>
 
     <p>
         Backups are intended to provide administrators with a recovery
         mechanism following accidental or malicious server changes.
+        Administrators may also compare two saved backups to review
+        structural differences between them, without modifying the server.
     </p>
 
     <h3>Backup limitations</h3>
@@ -296,7 +309,9 @@
     <p>
         Exported backups may be downloaded, stored externally, or imported
         into another server where the Bot is installed and the administrator
-        has the required permissions.
+        has the required permissions. Imported backups are validated for
+        structure and size before being accepted; malformed or invalid files
+        are rejected.
     </p>
 
     <p>
@@ -321,13 +336,20 @@
     </p>
 
     <p>
-        Server Saver presents the administrator with a confirmation step
-        before performing a restoration.
+        Before performing a restoration, Server Saver presents a preview of
+        the changes a restoration would make, and automatically creates a
+        fresh safety backup of the server's current state. If that safety
+        backup cannot be created successfully, the restoration is not
+        performed. Only one restoration may run at a time for a given
+        server.
     </p>
 
     <p>
         Restoration may create, modify, or remove server resources in
-        accordance with the selected backup and the Bot's capabilities.
+        accordance with the selected backup and the Bot's capabilities. When
+        a restoration finishes, Server Saver reports which operations
+        succeeded and which failed; it does not report a restoration as
+        complete if part of it failed.
     </p>
 
     <p>
@@ -337,15 +359,18 @@
 
     <p>
         We do not guarantee that restoration will reproduce the server
-        exactly as it existed when the backup was created.
+        exactly as it existed when the backup was created, or that every
+        operation within a restoration will succeed.
     </p>
 
 
     <h2>7. Anti-Nuke Protection</h2>
 
     <p>
-        Server Saver uses automated burst and heuristic detection to
-        identify potentially destructive activity.
+        Server Saver uses automated burst detection, heuristic detection, and
+        combined-action scoring to identify potentially destructive
+        activity, including attacks that mix different destructive actions
+        in a way that no single action type alone would reveal.
     </p>
 
     <p>
@@ -354,33 +379,135 @@
     </p>
 
     <ul>
-        <li>Channel deletions;</li>
+        <li>Channel deletions and creations;</li>
         <li>Bans;</li>
         <li>Kicks;</li>
-        <li>Role deletions;</li>
-        <li>Role creations;</li>
+        <li>Role deletions and creations;</li>
+        <li>Webhook deletions;</li>
         <li>Dangerous role-permission changes;</li>
         <li>Dangerous <code>@everyone</code> permission changes;</li>
-        <li>Unwhitelisted bot joins.</li>
+        <li>Unwhitelisted bot joins;</li>
+        <li>Actions by users on the Server Saver blacklist, which are treated as an immediate threat regardless of configured sensitivity.</li>
     </ul>
 
-    <p>Protective actions may include:</p>
+    <p>Protective actions may include, depending on the server's configured punishment setting:</p>
 
     <ul>
         <li>Removing dangerous permissions from an actor;</li>
-        <li>Kicking an actor;</li>
+        <li>Kicking, banning, or quarantining an actor;</li>
         <li>Reverting certain permission changes;</li>
-        <li>Logging the event;</li>
-        <li>Notifying server administrators.</li>
+        <li>Logging the event and grouping related events into a security incident;</li>
+        <li>Notifying server administrators, which may be consolidated into a single summary when many events occur in a short period.</li>
     </ul>
 
     <p>
-        The server owner and users placed on the Server Saver whitelist may
-        be exempt from certain anti-nuke actions.
+        Where the Discord user responsible for a detected permission change
+        cannot be reliably identified from Discord's audit log within a
+        short time, Server Saver will revert the change but will not take
+        punitive action against a specific user for that event.
+    </p>
+
+    <p>
+        The server owner and users placed on the Server Saver whitelist are
+        exempt from anti-nuke actions. Server Saver's protective actions
+        against a given user may fail if that user holds a Discord role
+        positioned at or above Server Saver's own role (see Section 3).
     </p>
 
 
-    <h2>8. No Guarantee of Complete Protection</h2>
+    <h2>8. Anti-Raid Protection</h2>
+
+    <p>
+        Server Saver can detect an unusually fast rate of new members
+        joining a server and respond by locking the server down, either
+        automatically based on a configurable threshold or manually at an
+        administrator's request.
+    </p>
+
+    <p>
+        While a lockdown is active, Server Saver may deny members the
+        ability to send messages or connect to voice channels server-wide.
+        An administrator may also enable an "antijoin" mode in which new
+        members are removed automatically while it remains active.
+    </p>
+
+    <p>
+        A lockdown engaged by anti-raid protection and a lockdown engaged
+        through Panic Mode (Section 10) share the same underlying mechanism;
+        disabling one does not reopen the server if the other is still
+        active.
+    </p>
+
+
+    <h2>9. JoinGate</h2>
+
+    <p>
+        Server Saver can restrict who is allowed to remain in a server after
+        joining, based on settings an administrator configures:
+    </p>
+
+    <ul>
+        <li>A minimum Discord account age, below which a new member is removed automatically;</li>
+        <li>Automatic removal of bots that have not been added to the server's bot whitelist.</li>
+    </ul>
+
+    <p>
+        These checks run at the moment a member joins and rely on
+        information Discord makes available about that account, such as its
+        creation date.
+    </p>
+
+
+    <h2>10. Panic Mode and Manual Lockdown</h2>
+
+    <p>
+        Panic Mode allows an authorized administrator to immediately lock
+        down the entire server, independent of any automated detection. As
+        with anti-raid lockdowns, this may deny members the ability to send
+        messages or connect to voice channels server-wide until an
+        administrator disables it.
+    </p>
+
+
+    <h2>11. Blacklist and Whitelist</h2>
+
+    <p>
+        Administrators may maintain a blacklist of Discord user IDs treated
+        as an immediate threat, and a whitelist of trusted administrators
+        and bots exempt from anti-nuke and join-gating checks. The server
+        owner is exempt automatically. Whitelist and blacklist entries are
+        scoped to the server in which they are configured.
+    </p>
+
+
+    <h2>12. Word Filter</h2>
+
+    <p>
+        Server Saver can automatically delete messages that match a
+        filtered-word list, which may use a default list or a list an
+        administrator has customized for their server. When a message is
+        removed this way, Server Saver posts the removed message's content,
+        author, and channel to the server's configured log channel so
+        administrators can review what was removed.
+    </p>
+
+    <p>
+        See Section 3 of our Privacy Policy for more information about how
+        message content is handled in connection with this feature.
+    </p>
+
+
+    <h2>13. Security Incident Tracking</h2>
+
+    <p>
+        Related anti-nuke events detected within a short time of one another
+        may be grouped into a single security incident for reporting
+        purposes, so administrators can review a summarized record of an
+        attack rather than a large number of individual event logs.
+    </p>
+
+
+    <h2>14. No Guarantee of Complete Protection</h2>
 
     <p>
         Server Saver is a security and moderation tool, not a guarantee of
@@ -388,9 +515,12 @@
     </p>
 
     <p>
-        Its anti-nuke system uses thresholds and heuristic/burst detection.
-        An attacker who acts slowly enough to remain below configured
-        thresholds may not be detected.
+        Its anti-nuke and anti-raid systems use thresholds, heuristic and
+        burst detection, and combined-action scoring. An attacker who acts
+        slowly enough, or in a way that stays below configured thresholds,
+        may not be detected. Server Saver reacts to activity reported by
+        Discord after it occurs; it cannot prevent a destructive action from
+        being submitted to Discord in the first place.
     </p>
 
     <p>
@@ -400,9 +530,9 @@
 
     <p>
         Server administrators should therefore use additional security
-        measures, including appropriate Discord permissions, two-factor
-        authentication where available, and careful management of users
-        with Administrator permissions.
+        measures, including appropriate Discord permissions, correct role
+        hierarchy, two-factor authentication where available, and careful
+        management of users with Administrator permissions.
     </p>
 
     <p>
@@ -411,7 +541,7 @@
     </p>
 
 
-    <h2>9. Automated Moderation</h2>
+    <h2>15. Automated Moderation</h2>
 
     <p>
         Server Saver may automatically take moderation or security actions
@@ -424,12 +554,12 @@
 
     <p>
         Server administrators are responsible for reviewing Server Saver's
-        configuration, sensitivity level, whitelist, logs, and automated
-        actions.
+        configuration, sensitivity level, punishment setting, whitelist,
+        blacklist, logs, and automated actions.
     </p>
 
 
-    <h2>10. Acceptable Use</h2>
+    <h2>16. Acceptable Use</h2>
 
     <p>You must not use Server Saver to:</p>
 
@@ -452,7 +582,7 @@
     </p>
 
 
-    <h2>11. Availability</h2>
+    <h2>17. Availability</h2>
 
     <p>
         Server Saver is provided on an "as available" basis.
@@ -477,11 +607,12 @@
     </p>
 
 
-    <h2>12. Third-Party Services</h2>
+    <h2>18. Third-Party Services</h2>
 
     <p>
-        Server Saver operates through Discord and may rely on infrastructure
-        or service providers required to operate the Bot.
+        Server Saver operates through Discord and relies on third-party
+        infrastructure, including database hosting, required to operate the
+        Bot.
     </p>
 
     <p>
@@ -501,7 +632,7 @@
     </p>
 
 
-    <h2>13. Intellectual Property</h2>
+    <h2>19. Intellectual Property</h2>
 
     <p>
         Unless otherwise stated, Server Saver's original software, branding,
@@ -521,18 +652,18 @@
     </p>
 
 
-    <h2>14. User and Server Responsibility</h2>
+    <h2>20. User and Server Responsibility</h2>
 
     <p>Server administrators are responsible for:</p>
 
     <ul>
         <li>Configuring Server Saver appropriately;</li>
-        <li>Reviewing the permissions granted to the Bot;</li>
+        <li>Reviewing the permissions and role position granted to the Bot;</li>
         <li>Maintaining appropriate server security;</li>
         <li>Reviewing backups;</li>
         <li>Protecting exported backup files;</li>
-        <li>Reviewing automated security actions;</li>
-        <li>Managing whitelisted users and bots;</li>
+        <li>Reviewing automated security actions and incident reports;</li>
+        <li>Managing whitelisted and blacklisted users and bots;</li>
         <li>Ensuring lawful use of the Service.</li>
     </ul>
 
@@ -541,7 +672,7 @@
     </p>
 
 
-    <h2>15. Disclaimer</h2>
+    <h2>21. Disclaimer</h2>
 
     <p>
         To the maximum extent permitted by applicable law, Server Saver is
@@ -563,11 +694,11 @@
     </ul>
 
 
-    <h2>16. Limitation of Liability</h2>
+    <h2>22. Limitation of Liability</h2>
 
     <p>
         To the maximum extent permitted by applicable law,
-        <strong>[Your Name / Company Name]</strong> and the Server Saver
+        <strong>Dimitris K</strong> and the Server Saver
         development team will not be liable for indirect, incidental,
         special, consequential, or punitive damages arising from the use of,
         or inability to use, Server Saver.
@@ -593,7 +724,7 @@
     </p>
 
 
-    <h2>17. Suspension and Termination</h2>
+    <h2>23. Suspension and Termination</h2>
 
     <p>
         You may stop using Server Saver at any time by removing it from your
@@ -623,7 +754,7 @@
     </p>
 
 
-    <h2>18. Changes to These Terms</h2>
+    <h2>24. Changes to These Terms</h2>
 
     <p>
         We may update these Terms as Server Saver develops or as legal or
@@ -641,7 +772,7 @@
     </p>
 
 
-    <h2>19. Contact</h2>
+    <h2>25. Contact</h2>
 
     <p>
         For questions regarding these Terms, contact:
