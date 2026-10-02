@@ -115,15 +115,14 @@
 <body>
 
 <main>
-
     <h1>Server Saver — Privacy Policy</h1>
 
     <p class="meta">
-        <strong>Last Updated:</strong> August 31, 2026
+        <strong>Last Updated:</strong> October 1, 2026
     </p>
 
     <p class="meta">
-        <strong>Effective Date:</strong> August 31, 2026
+        <strong>Effective Date:</strong> October 1, 2026
     </p>
 
     <hr>
@@ -189,12 +188,12 @@
         <li>Role permissions;</li>
         <li><code>@everyone</code> permissions;</li>
         <li>Permission overwrites;</li>
-        <li>Server configuration.</li>
+        <li>Server configuration, including anti-nuke sensitivity and punishment settings, anti-raid and JoinGate thresholds, backup schedule and retention settings, and the server's customized word-filter list, if any.</li>
     </ul>
 
     <p>
-        This information is required for features such as backups and
-        restoration.
+        This information is required for features such as backups,
+        restoration, anti-nuke, anti-raid, and JoinGate.
     </p>
 
     <h3>User and Member Information</h3>
@@ -208,6 +207,8 @@
         <li>Discord user ID;</li>
         <li>Username or display name;</li>
         <li>Server roles;</li>
+        <li>Account creation date, where needed to enforce a server's configured JoinGate minimum account age;</li>
+        <li>Whitelist, bot whitelist, and blacklist entries configured for the server;</li>
         <li>
             Information necessary to identify the actor responsible for a
             security or moderation event;
@@ -225,21 +226,25 @@
     </p>
 
     <ul>
-        <li>Bans;</li>
-        <li>Kicks;</li>
-        <li>Channel deletions;</li>
-        <li>Role deletions;</li>
-        <li>Role creations;</li>
+        <li>Bans, kicks, warns, and unbans;</li>
+        <li>Channel and category deletions or creations;</li>
+        <li>Role deletions or creations;</li>
         <li>Dangerous permission changes;</li>
-        <li>Anti-nuke triggers;</li>
-        <li>Whitelist configuration;</li>
-        <li>Bot whitelist configuration;</li>
-        <li>Moderation actions.</li>
+        <li>Anti-nuke triggers and the security incidents they are grouped into;</li>
+        <li>Anti-raid join-flood detections and lockdown activity;</li>
+        <li>JoinGate removals (account age or unauthorized bot);</li>
+        <li>Panic Mode activations and deactivations;</li>
+        <li>Backup, export, import, and restore operations, including restore outcomes;</li>
+        <li>Messages removed by the word filter, as described in Section 3;</li>
+        <li>Whitelist, bot whitelist, and blacklist configuration;</li>
+        <li>Other moderation actions.</li>
     </ul>
 
     <p>
-        These records are used to provide Server Saver's moderation and
-        anti-nuke functionality.
+        These records are used to provide Server Saver's moderation,
+        anti-nuke, anti-raid, and recovery functionality, and to generate
+        the security incident reports and dashboard information available
+        to server administrators.
     </p>
 
 
@@ -250,15 +255,28 @@
     </p>
 
     <p>
-        Server Saver's documented functionality does not use message history
-        as part of its backup and restoration system.
+        Server Saver's backup and restoration system does not use or store
+        message history.
     </p>
 
     <p>
-        Server administrators should nevertheless understand that enabling
-        Discord's Message Content Intent may make certain message-related
-        information available to the Bot through Discord's API where required
-        for its functionality.
+        Server Saver's word filter feature does process message content
+        directly: each message is checked against the server's filtered-word
+        list (a default list, or one an administrator has customized) in
+        order to decide whether to remove it. If a message matches, Server
+        Saver deletes it and posts the removed message's content, author,
+        and channel to the server's configured log channel, so
+        administrators can review what was removed. Server Saver does not
+        otherwise retain message content after this point; filtered message
+        content is not stored in Server Saver's database beyond what is
+        posted to the log channel.
+    </p>
+
+    <p>
+        Server administrators should understand that enabling Discord's
+        Message Content Intent makes message content available to the Bot
+        through Discord's API, and that disabling or removing the word
+        filter feature stops this processing.
     </p>
 
     <p>
@@ -276,8 +294,9 @@
     <h2>4. Backups</h2>
 
     <p>
-        When an administrator uses <code>/backup</code>, Server Saver stores
-        a snapshot of supported server configuration.
+        When an administrator uses <code>/backup</code>, or when an
+        automatic scheduled backup runs, Server Saver stores a snapshot of
+        supported server configuration.
     </p>
 
     <p>
@@ -301,8 +320,10 @@
     </ul>
 
     <p>
-        Server Saver's current storage implementation keeps up to
-        <strong>five versioned backups per server</strong>.
+        Server Saver's current storage implementation keeps a configurable
+        number of versioned backups per server, defaulting to
+        <strong>five</strong> and adjustable by a server administrator up to
+        a maximum of one hundred.
     </p>
 
     <p>
@@ -338,12 +359,15 @@
 
     <p>
         Administrators may use <code>/importbackup</code> to upload a
-        previously exported JSON backup.
+        previously exported JSON backup. Imported files are validated for
+        structure, data types, and size before being accepted; files that do
+        not pass validation are rejected and not stored.
     </p>
 
     <p>
-        Imported backup information is processed so that it can be stored and
-        used by Server Saver's restoration functionality.
+        Imported backup information that passes validation is processed so
+        that it can be stored and used by Server Saver's restoration
+        functionality.
     </p>
 
     <p>
@@ -352,11 +376,13 @@
     </p>
 
 
-    <h2>7. Local Database Storage</h2>
+    <h2>7. Database Storage</h2>
 
     <p>
-        Server Saver uses a SQLite database to store information required for
-        its operation.
+        Server Saver stores information required for its operation in a
+        MongoDB database. This is third-party database infrastructure used
+        to host Server Saver's data, rather than a file stored on any single
+        device.
     </p>
 
     <p>
@@ -364,15 +390,19 @@
     </p>
 
     <ul>
-        <li>Server configuration;</li>
-        <li>Administrator whitelist information;</li>
-        <li>Bot whitelist information;</li>
-        <li>Versioned backups;</li>
-        <li>Anti-nuke trigger history.</li>
+        <li>Server configuration, including anti-nuke, anti-raid, JoinGate, and Panic Mode settings;</li>
+        <li>Administrator whitelist, bot whitelist, and blacklist information;</li>
+        <li>Versioned backups and backup schedule configuration;</li>
+        <li>Anti-nuke trigger history and grouped security incidents;</li>
+        <li>Restore operation history and outcomes;</li>
+        <li>Panic Mode and lockdown history, and the permission state needed to restore a channel's settings after a lockdown ends;</li>
+        <li>A server's customized word-filter list, if one has been configured.</li>
     </ul>
 
     <p>
-        The database is created and maintained as part of the Bot's operation.
+        The database is created and maintained as part of the Bot's
+        operation, and access is limited to what Server Saver's own code
+        requires to function.
     </p>
 
 
@@ -384,14 +414,15 @@
 
     <ul>
         <li>Provide requested Bot functionality;</li>
-        <li>Create and restore server backups;</li>
-        <li>Detect potentially destructive activity;</li>
-        <li>Execute configured anti-nuke protections;</li>
-        <li>Perform moderation actions;</li>
-        <li>Maintain moderation and security logs;</li>
+        <li>Create, schedule, compare, and restore server backups;</li>
+        <li>Detect potentially destructive or anomalous activity;</li>
+        <li>Execute configured anti-nuke, anti-raid, and JoinGate protections;</li>
+        <li>Apply and report on Panic Mode and lockdown actions;</li>
+        <li>Perform moderation actions, including the word filter;</li>
+        <li>Maintain moderation and security logs and incident reports;</li>
         <li>Identify actors involved in security events;</li>
-        <li>Maintain administrator and bot whitelists;</li>
-        <li>Provide server status information;</li>
+        <li>Maintain administrator whitelist, bot whitelist, and blacklist entries;</li>
+        <li>Provide server status, dashboard, and security self-check information;</li>
         <li>Diagnose technical problems;</li>
         <li>Prevent abuse and protect the Service;</li>
         <li>Comply with applicable legal obligations.</li>
@@ -405,15 +436,18 @@
     <h2>9. Anti-Nuke Notifications and Logs</h2>
 
     <p>
-        When an anti-nuke event is detected, Server Saver may:
+        When an anti-nuke, anti-raid, or JoinGate event is detected, Server
+        Saver may:
     </p>
 
     <ul>
-        <li>Record the event;</li>
+        <li>Record the event and, where related events occur close together, group them into a single security incident;</li>
         <li>Post the event in the configured log channel;</li>
         <li>Take automated protective action;</li>
         <li>
-            Notify members with Administrator permission through Discord;
+            Notify members with Administrator permission through Discord,
+            which may be consolidated into a periodic summary rather than
+            one notification per event during a fast-moving incident;
         </li>
         <li>
             DM the server owner or relevant administrators where supported
@@ -424,7 +458,8 @@
     <p>
         The information contained in these notifications may include
         information about the detected action and the Discord user responsible
-        for it.
+        for it, where that user could be reliably identified (see Section 7
+        of our Terms of Service).
     </p>
 
 
@@ -485,27 +520,32 @@
     <h3>Backups</h3>
 
     <p>
-        The current Server Saver implementation retains up to
-        <strong>five versioned backups per server</strong>.
+        The current Server Saver implementation retains a configurable
+        number of versioned backups per server, defaulting to five and
+        adjustable up to one hundred.
     </p>
 
     <p>
-        Older backups may be removed when the storage limit is reached or when
-        otherwise deleted.
+        Older backups may be removed when the configured retention limit is
+        reached, and only after a new backup has been saved successfully, or
+        when otherwise deleted.
     </p>
 
-    <h3>Anti-Nuke History</h3>
+    <h3>Security Incidents and Anti-Nuke History</h3>
 
     <p>
-        Anti-nuke trigger history may be stored as part of the server's
-        configuration and security information.
+        Anti-nuke trigger history, grouped security incidents, and restore
+        operation history may be stored as part of the server's security
+        information to support logging, incident review, and the dashboard
+        and safety-check features.
     </p>
 
     <h3>Configuration</h3>
 
     <p>
-        Server configuration and whitelist information may be retained while
-        Server Saver is configured for the relevant server.
+        Server configuration, whitelist, bot whitelist, blacklist, and
+        word-filter information may be retained while Server Saver is
+        configured for the relevant server.
     </p>
 
     <p>
@@ -661,7 +701,7 @@
 
     <ul>
         <li>Their Discord accounts;</li>
-        <li>Bot permissions;</li>
+        <li>Bot permissions and role position;</li>
         <li>Exported backup files;</li>
         <li>Server administrator accounts.</li>
     </ul>
@@ -710,9 +750,9 @@
     <h2>18. International Data Transfers</h2>
 
     <p>
-        Depending on where Server Saver and its infrastructure are hosted,
-        information may be processed or stored in countries outside your
-        country of residence.
+        Depending on where Server Saver and its infrastructure, including its
+        database provider, are hosted, information may be processed or
+        stored in countries outside your country of residence.
     </p>
 
     <p>
